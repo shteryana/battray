@@ -40,7 +40,8 @@ def freebsd():
 
 	o = subprocess.Popen(['acpiconf', '-i0'], stdout=subprocess.PIPE).communicate()[0]
 
-	for line in o.split('\n'):
+	ostring = o.decode("utf-8")
+	for line in ostring.split('\n'):
 		if line.find(':') == -1:
 			continue
 		(key, value) = line.split(':', 1)
